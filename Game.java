@@ -13,6 +13,7 @@ public class Game {
         }
     }
 
+    //map create
     public void init(){
         map.init(MAPSIZE);
         for(int i = 0; i < SHIPS; i++){
@@ -22,6 +23,7 @@ public class Game {
         }
     }
 
+    //gamestart
     public void startGame(){
         int attackX;
         int attackY;
@@ -30,7 +32,7 @@ public class Game {
         int turn = 1;
 
         title();
-        while(!isAllSink()){
+        while(!AllSink()){
             System.out.println("------[ターン"+turn+"]------");
             displaySituation();
             System.out.println("爆弾のX座標を入力してください(1-"+MAPSIZE+")");
@@ -41,7 +43,7 @@ public class Game {
             for(int i = 0; i < SHIPS; i++ ){
                 int result = ship[i].check(attackX-1, attackY-1);
 
-                doByResult(ship[i],i+1,result);
+                Result(ship[i],i+1,result);
             }
             turn++;
         }
@@ -50,16 +52,19 @@ public class Game {
         scanner.close();
     }
 
+    //call title
     private void title(){
         System.out.println("*********************");
         System.out.println("      戦艦ゲーム　    ");
         System.out.println("*********************");
     }
 
-    private boolean isAllSink(){
+
+    //船沈んだか
+    private boolean AllSink(){
         boolean allSink = true;
         for(int i = 0; i < SHIPS; i++){
-            if( ship[i].isAlive()){
+            if( ship[i].Alive()){
                 allSink = false;
                 break;
             }
@@ -67,9 +72,11 @@ public class Game {
 
         return allSink;
     }
+
+    //船の状況表示
     private void displaySituation(){
         for(int i = 0;i < SHIPS; i++){
-            if( ship[i].isAlive()){
+            if( ship[i].Alive()){
                 System.out.println("船"+(i+1)+":生きてる");
             }else{
                 System.out.println("船"+(i+1)+":撃沈済み");
@@ -77,7 +84,8 @@ public class Game {
         }
     }
 
-    private void doByResult(Ship ship,int no,int result){
+    //船ＨＩＴ判定
+    private void Result(Ship ship,int no,int result){
         if( result == Ship.NO_HIT){
             System.out.println("船"+no+":はずれ！");
         }else if( result == Ship.NEAR){
@@ -91,6 +99,7 @@ public class Game {
         }
     }
 
+    //ＨＩＴ時の船移動
     private void moveShip(Ship ship){
 
         map.clear(ship.getPosX(), ship.getPosY());

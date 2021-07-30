@@ -27,6 +27,7 @@ public class Ship{
         y = (int)(Math.random()*mapSize);
     }
 
+    //判定
     public int check(int x,int y){
         int result = NO_HIT;
         if(x == this.x && y == this.y){
@@ -47,7 +48,8 @@ public class Ship{
         return result;
     }
 
-    public boolean isAlive(){
+    //ship alive?
+    public boolean Alive(){
         return (hp>0);
     }
 }

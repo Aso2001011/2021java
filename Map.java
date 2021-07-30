@@ -2,9 +2,9 @@ public class Map {
     private int[][] map;
 
     public Map(){
-        ;
     }
 
+    //creatmap
     public void init(int mapSize){
         map = new int[mapSize][mapSize];
         for(int i = 0; i < mapSize; i++){
@@ -14,6 +14,7 @@ public class Map {
         }
     }
 
+    
     public boolean deployShip(Ship ship){
         int x = ship.getPosX();
         int y = ship.getPosY();
