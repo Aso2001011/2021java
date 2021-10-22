@@ -7,11 +7,7 @@ package rpgcreature;
 public abstract class Creature {
     private String name;
     protected int hp;
-
-    /**
-     * コンストラクタ
-     * @param name：名前
-     * @param hp：最大HP
+     /* @param hp：最大HP
      */
     public Creature(String name,int hp){
         this.name = name;
@@ -26,7 +22,7 @@ public abstract class Creature {
 
     /**
      * ダメージを受けるメソッド
-     * @param damage：受けるダメージ数
+     * @param damage：受けるダメージ数s
      */
     public void damaged(int damage){
         hp -= damage;

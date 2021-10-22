@@ -6,7 +6,7 @@ import java.util.Random;
  * 勇者クラス
  */
 public class Braver extends Creature{
-    private final static int MAX_HP = 100;
+    private final static int MAX_HP = 100000;
     private final static int RECOVERY_POINT = 20;
     private final static int CRITICAL_HIT_RATE = 10;
 
@@ -33,7 +33,7 @@ public class Braver extends Creature{
             damage = 50;
             System.out.printf("%sのクリティカルヒット！\n",getName());
         }else{
-            damage = r.nextInt(10)+1;
+            damage = r.nextInt()+1;
             
         }
         opponent.damaged(damage);
