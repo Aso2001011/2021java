@@ -15,6 +15,8 @@ public class RPGMain {
     private final int MONSTER_NUM=3;
     private final int COMMAND_BATTLE=1;
     private final int COMMAND_RECOVERY=2;
+    private int turn = 0;
+    private final int MONSTER_KINDS = 4;
 
     private Braver braver;
     private Monster[] monsters;
@@ -28,7 +30,6 @@ public class RPGMain {
      * ゲームメインメソッド
      */
     public void game(){
-
         //タイトル表示
         dispTitle();
 
@@ -47,19 +48,26 @@ public class RPGMain {
 
         //メインループ（無限ループ）
         while(true){
+            turn++;
             //現在の状態を表示
             dispStatus();
             //入力されたコマンドを取得
             int command = sc.nextInt();
-            if( command == COMMAND_BATTLE ){
-                //たたかう
-                if( !battle() ){
-                    break;
+            if(command == 1 || command == 2){
+                if( command == COMMAND_BATTLE ){
+                    //たたかう
+                    if( !battle() ){
+                        break;
+                    }
+                }else{
+                    //回復する
+                    braver.recovery();
                 }
             }else{
-                //回復する
-                braver.recovery();
+                System.out.println("1か2を入力してください");
             }
+           
+
         }
 
         sc.close();
@@ -88,6 +96,7 @@ public class RPGMain {
      */
     private void dispStatus(){
         System.out.println("==========================");
+        System.out.printf("=========ターン%d=========\n",turn);
         System.out.printf( "= %s                 =\n",braver.getName());
         System.out.printf( "= HP:%3d                 =\n",braver.getHp());
         System.out.println("==========================");
@@ -102,7 +111,7 @@ public class RPGMain {
         monsters = new Monster[MONSTER_NUM];
         for(int i=0; i < MONSTER_NUM; i++){
             //乱数を取得してモンスターを決定する
-            int value = r.nextInt(4);
+            int value = r.nextInt(MONSTER_KINDS);
             if( value == 0 ){
                 monsters[i] = new Slime();
             }else if( value == 1){
@@ -132,7 +141,7 @@ public class RPGMain {
         Monster monster = null;
         //モンスター存在確認
         do{
-            int index = r.nextInt(3);
+            int index = r.nextInt(MONSTER_NUM);
             monster = monsters[index];
         }while( !monster.isThere() );
 
