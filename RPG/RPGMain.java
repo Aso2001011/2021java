@@ -17,6 +17,7 @@ public class RPGMain {
     private final int COMMAND_RECOVERY=2;
     private int turn = 0;
     private final int MONSTER_KINDS = 4;
+    private int getGold = 0;
 
     private Braver braver;
     private Monster[] monsters;
@@ -154,6 +155,7 @@ public class RPGMain {
         //3体居なくなった？
         if( isNotThereAllMonster() ){
             //すべて居なくなったら終了
+            System.out.printf("%dゴールドを獲得した！\n",getGold);
             return false;
         }
 
@@ -184,6 +186,7 @@ public class RPGMain {
                 isNotThereMonster = false;
                 break;
             }
+            getGold += monsters[i].getGold();
         }
         return isNotThereMonster;
     }
