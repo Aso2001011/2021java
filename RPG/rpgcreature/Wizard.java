@@ -11,7 +11,7 @@ public class Wizard extends Monster{
      * 魔法使いのコンストラクタ
      */
     public Wizard(){
-        super("魔法使い",30);
+        super("魔法使い",30,500);
     }
 
     /**

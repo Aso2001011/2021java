@@ -4,8 +4,9 @@ import java.util.Random;
 
 public class Golem extends Monster {
     private final static int CRITICAL_HIT_RATE = 5;
+
     public Golem(){
-        super("ゴーレム",100);
+        super("ゴーレム",100,1000);
     }
     
     @Override

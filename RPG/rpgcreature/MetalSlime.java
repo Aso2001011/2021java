@@ -12,7 +12,7 @@ public class MetalSlime extends Monster{
      * メタルスライムのコンストラクタ
      */
     public MetalSlime(){
-        super("メタルスライム",12);
+        super("メタルスライム",12,500000);
     }
 
     /**

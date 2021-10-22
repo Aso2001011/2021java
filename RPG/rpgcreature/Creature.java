@@ -7,11 +7,17 @@ package rpgcreature;
 public abstract class Creature {
     private String name;
     protected int hp;
+    private int gold;
      /* @param hp：最大HP
      */
     public Creature(String name,int hp){
         this.name = name;
         this.hp = hp;
+    }
+    public Creature(String name,int hp,int gold){
+        this.name = name;
+        this.hp = hp;
+        this.gold = gold;
     }
 
     /**
@@ -53,6 +59,9 @@ public abstract class Creature {
      */
     public int getHp(){
         return hp;
+    }
+    public int getGold(){
+        return gold;
     }
 
     /**
