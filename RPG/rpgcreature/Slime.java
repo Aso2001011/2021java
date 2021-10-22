@@ -11,7 +11,7 @@ public class Slime extends Monster{
      * スライムクラスのコンストラクタ
      */
     public Slime(){
-        super("スライム",12);
+        super("スライム",12,10);
     }
 
     /**

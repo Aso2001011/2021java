@@ -33,7 +33,7 @@ public class Braver extends Creature{
             damage = 50;
             System.out.printf("%sのクリティカルヒット！\n",getName());
         }else{
-            damage = r.nextInt()+1;
+            damage = r.nextInt(10)+1;
             
         }
         opponent.damaged(damage);
